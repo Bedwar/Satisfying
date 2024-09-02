@@ -1,23 +1,24 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import { sendPasswordResetEmail } from 'firebase/auth';
-import { auth } from '../firebase/config';
 
 const ForgotPassword = (props) => {
   const [email, setEmail] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const [sucessoMessage, setSucessoMessage] = useState('');
 
+  //valida email
+  const validarEmail = (email) => {
+    return /^[\w+.]+@\w+\.\w{2,}(?:\.\w{2})?$/.test(email)
+  };
 
-  const handleRecoverPassword = () => {
-    sendPasswordResetEmail(auth, email)
-    .then(() => {
-      setSucessoMessage('Email de recuperação de senha enviado com sucesso!!');
-    })
-    .catch((error) => {
-      setErrorMessage('Erro ao enviar email de recuperação de senha: ' + JSON.stringify(error));
-    });
+  const handleRecoverPassword = (text) => {
+    setSucessoMessage('');setErrorMessage('');
+    if(validarEmail(text)) {
+      setSucessoMessage('Email enviado com sucesso!')
+    } else {
+      setErrorMessage('E-mail parece ser inválido');
+    }
   };
 
   return (
@@ -79,11 +80,11 @@ const styles = StyleSheet.create({
     fontSize: 18,
     color: 'white',
     alignSelf: 'flex-start',
-    marginHorizontal: 80,
+    marginHorizontal: 40,
     fontFamily: 'AveriaLibre-Regular'
   },
   input: {
-    width: '60%',
+    width: '80%',
     marginBottom: 2,
     backgroundColor: 'white',
     height: 35,
@@ -95,7 +96,7 @@ const styles = StyleSheet.create({
     color: 'tomato',
     fontSize: 15,
     fontFamily: 'AveriaLibre-Regular',
-    textAlign: 'left'
+    textAlign:'left'
   },
   sucessoMessage: {
     color: 'limegreen',
@@ -104,7 +105,7 @@ const styles = StyleSheet.create({
   },
   button: {
     backgroundColor: '#5cdb95',
-    width: '60%',
+    width: '80%',
     height: 40,
     justifyContent: 'center',
     alignItems: 'center',

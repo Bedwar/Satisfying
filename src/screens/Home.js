@@ -76,7 +76,6 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         flex: 1,
         backgroundColor: 'white',
-        borderRadius: 10,
     },
     input: {
         flex: 1,
@@ -113,15 +112,15 @@ const styles = StyleSheet.create({
     },
     date: {
         fontSize: 16,
-        color: 'gray',
+        color: 'grey',
         fontFamily: 'AveriaLibre-Regular',
     },
     button: {
-        backgroundColor: '#37BD6D',
+        backgroundColor: '#5cdb95',
         height: 40,
         justifyContent: 'center',
         alignItems: 'center',
-        borderRadius: 10,
+        
     },
     buttonText: {
         fontSize: 20,

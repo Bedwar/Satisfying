@@ -144,6 +144,7 @@ const styles = StyleSheet.create({
     fontFamily: 'AveriaLibre-Regular'
   },
   content: {
+    marginTop: 20,
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -151,7 +152,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     color: 'white',
     alignSelf: 'flex-start',
-    marginHorizontal: 160,
+    marginHorizontal: 40,
     fontFamily: 'AveriaLibre-Regular'
   },
   errorMessage: {
@@ -166,10 +167,10 @@ const styles = StyleSheet.create({
     fontFamily: 'AveriaLibre-Regular'
   },
   input: {
-    width: '60%',
-    marginBottom: 2,
+    width: '80%',
+    marginBottom: 10,
     backgroundColor: 'white',
-    height: 30,
+    height: 35,
     paddingHorizontal: 15,
     paddingVertical: 5,
     fontFamily: 'AveriaLibre-Regular'
@@ -177,21 +178,22 @@ const styles = StyleSheet.create({
   imageButton: {
     backgroundColor: 'white',
     height: 55,
-    width: '30%',
+    width: '50%',
+    fontFamily: 'AveriaLibre-Regular',
     justifyContent: 'center',
     alignItems: 'center',
     alignSelf: 'flex-start',
-    borderRadius: 5,
-    marginBottom: 10,
-    marginHorizontal: 160,
+    color: 'grey',
+    marginBottom: 30,
+    marginTop: 10,
+    marginHorizontal: 40,
   },
   button: {
-    backgroundColor: '#37BD6D',
-    width: '60%',
+    backgroundColor: '#5cdb95',
+    width: '80%',
     height: 35,
     justifyContent: 'center',
     alignItems: 'center',
-    borderRadius: 10,
   },
   buttonText: {
     fontSize: 20,

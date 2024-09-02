@@ -58,21 +58,21 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     paddingHorizontal: 10,
-    paddingVertical: 50
+    paddingVertical: 100
   },
   button: {
     backgroundColor: 'darkslateblue',
     justifyContent: 'center',
     alignItems: 'center',
-    borderRadius: 10,
+    borderRadius: 3,
     width: '30%',
-    height: '90%',
+    height: '50%',
     padding: 10,
   },
   buttonText: {
     color: 'white',
     marginTop: 5,
-    fontSize: 25,
+    fontSize: 13,
     textAlign: 'center',
     fontFamily: 'AveriaLibre-Regular'
   },

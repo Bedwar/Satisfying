@@ -27,9 +27,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#483d8b',
   },
   question: {
-    fontSize: 35,
+    fontSize: 22,
     color: 'white',
-    marginBottom: 20,
+    marginBottom: 30,
     textAlign: 'center',
     fontFamily: 'AveriaLibre-Regular'
   }

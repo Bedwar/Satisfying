@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import {auth} from '../firebase/config';
-import { createUserWithEmailAndPassword } from "firebase/auth";
 
 const CreateAccount = (props) => {
   const [email, setEmail] = useState('');
@@ -10,16 +8,6 @@ const CreateAccount = (props) => {
   const [repeatPassword, setRepeatPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const [sucessoMessage, setSucessoMessage] = useState('');
-
-  const handleCadastro = () => {    
-    createUserWithEmailAndPassword(auth,email, password)
-    .then((userCredential) => {
-      setSucessoMessage('Cadastro realizado com sucesso:'+ userCredential.user.email);
-    })
-    .catch((error) => {
-      setErrorMessage('Erro ao salvar usuário: '+ error.message);
-    });
-  };
 
   const validarEmail = (email) => {
     return /^[\w+.]+@\w+\.\w{2,}(?:\.\w{2})?$/.test(email)
@@ -42,7 +30,6 @@ const CreateAccount = (props) => {
       setErrorMessage('E-mail e/ou senha inválidos');
     }
   };
- 
 
   return (
     <View style={styles.container}>
@@ -80,7 +67,7 @@ const CreateAccount = (props) => {
         {sucessoMessage ? <Text style={styles.sucessoMessage}>{sucessoMessage}</Text> : null}
         <TouchableOpacity
           style={styles.button}
-          onPress={() => {handleCadastro();}}
+          onPress={() => {handleRegister(email, password, repeatPassword)}}
         >
           <Text style={styles.buttonText}>CADASTRAR</Text>
         </TouchableOpacity>
@@ -109,6 +96,7 @@ const styles = StyleSheet.create({
     fontFamily: 'AveriaLibre-Regular'
   },
   content: {
+    marginTop: 20,
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -116,12 +104,12 @@ const styles = StyleSheet.create({
     fontSize: 18,
     color: 'white',
     alignSelf: 'flex-start',
-    marginHorizontal: 160,
+    marginHorizontal: 40,
     fontFamily: 'AveriaLibre-Regular'
   },
   input: {
-    width: '60%',
-    marginBottom: 2,
+    width: '80%',
+    marginBottom: 10,
     backgroundColor: 'white',
     height: 35,
     paddingHorizontal: 15,
@@ -139,8 +127,8 @@ const styles = StyleSheet.create({
     fontFamily: 'AveriaLibre-Regular'
   },
   button: {
-    backgroundColor: '#37BD6D',
-    width: '60%',
+    backgroundColor: '#5cdb95',
+    width: '80%',
     height: 40,
     justifyContent: 'center',
     alignItems: 'center',
