@@ -57,10 +57,10 @@ const globalStyles = StyleSheet.create({
         borderRadius: 1,
         height: 35,
         paddingHorizontal: 15,
-        paddingVertical: 5,
+        paddingVertical: 0,
     
   },
-area: {
+ area: {
     marginLeft:18,
     //backgroundColor:'red',
     width:  '100%',
@@ -118,6 +118,55 @@ area: {
     marginTop:10,
   },
 
+   researchCard: {
+        flex: 1,
+        flexDirection: 'column',
+        alignItems: 'center',
+        width: 271,
+        height: 238,
+        backgroundColor: 'white',
+        marginRight: 49,
+        borderRadius: 10,
+   },
+
+   cardImage: {
+       width: 120,
+       height: 120,
+       marginTop: 26,
+   },
+
+   title: {
+       fontSize: 16,
+       fontWeight: 400,
+       lineHeight: 36,
+       fontFamily: fonts.regular,
+       fontSize: 36,
+       marginTop: 15,
+   },
+
+   date: {
+   },
+
+   searchIcon: {
+       width: 24,
+       height: 24,
+       marginLeft: 9,
+   },
+
+   searchBar: {
+       backgroundColor: colors.text,
+       flex: 1,
+       flexDirection: 'row',
+       justifyContent: 'flex-start',
+       alignItems: 'center',
+   },
+
+   inputText: {
+       fontFamily: fonts.regular,
+       color: 'black',
+       lineHeight: 50,
+       fontSize: 20,
+   },
 });
 
 export default globalStyles;

@@ -25,19 +25,24 @@ const Home = (props) => {
         <View style={globalStyles.container}>
         
             <View style={globalStyles.header}>
-                <View style={globalStyles.container}>
-                    <Image source={require('../../assets/icons/search-icon.png')} style={globalStyles.searchIcon} size={10} />
-                    <TextInput
-                        style={globalStyles.inputs}
-                        placeholder="Insira o termo de busca..."
-                    />
+                <View style={globalStyles.searchBar}>
+                    <Image source={require('../../assets/icons/search-icon.png')} style={globalStyles.searchIcon}/>
+                    <View style={[globalStyles.inputs], {}}>
+                        <TextInput
+                            style={globalStyles.inputText}
+                            placeholder="Insira o termo de busca..."
+                        />
+                    </View>
                 </View>
+
+                <TouchableOpacity style={globalStyles.searchButton}>
+                </TouchableOpacity>
             </View>
 
             <ScrollView
                 horizontal={true} 
                 showsHorizontalScrollIndicator={false} 
-                style={globalStyles.scrollContainer} 
+                style={[globalStyles.scrollContainer], {marginTop: 58}}
             >
                 {researchData.map((research, index) => (
                     <TouchableOpacity 
