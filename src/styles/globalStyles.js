@@ -34,6 +34,7 @@ const globalStyles = StyleSheet.create({
     padding: spacing.large,
   },
   header: {
+    justifyContent:'flex-start',
     flexDirection: 'row',
     fontSize: 30,
     fontFamily: fonts.bold,
@@ -49,7 +50,7 @@ const globalStyles = StyleSheet.create({
   },
 
  inputs: {
-        width: '90%',
+        width: '93%',
         color: colors.azul,
         backgroundColor: colors.text,
         fontFamily: fonts.regular,
@@ -60,7 +61,7 @@ const globalStyles = StyleSheet.create({
     
   },
 area: {
-    marginLeft:30,
+    marginLeft:18,
     //backgroundColor:'red',
     width:  '100%',
     paddingHorizontal: spacing.medium,

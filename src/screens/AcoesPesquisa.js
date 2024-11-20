@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import globalStyles from '../styles/globalStyles';
 
 const AcoesPesquisa = (props) => {
 

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import globalStyles from '../styles/globalStyles';
 
 const RecuperarSenha = (props) => {
   const [email, setEmail] = useState('');
@@ -26,28 +27,29 @@ const RecuperarSenha = (props) => {
 
       <View style={globalStyles.header}>
         <TouchableOpacity onPress={() => props.navigation.navigate('Login')}>
-          <Icon name="arrow-back" size={30} color="lightblue" />
+          <Icon name="arrow-back" size={40} color="lightblue" />
         </TouchableOpacity>
-        <Text style={globalStyles.title}>Recuperação de senha</Text>
+        <Text style={globalStyles.header}>Recuperação de senha</Text>
       </View>
 
-      <View style={globalStyles.content}>
+      <View style={globalStyles.area}>
         <Text style={globalStyles.label}>E-mail</Text>
         <TextInput
-          style={globalStyles.input}
+          style={globalStyles.inputs}
           placeholder="usuario@dominio.com"
           value={email}
           onChangeText={text => setEmail(text)}
         />
-        {errorMessage ? <Text style={globalStyles.errorMessage}>{errorMessage}</Text> : null}
+        {errorMessage ? <Text style={globalStyles.errorText}>{errorMessage}</Text> : null}
         {sucessoMessage ? <Text style={globalStyles.sucessoMessage}>{sucessoMessage}</Text> : null}
-        <TouchableOpacity
+       
+      </View>
+      <TouchableOpacity
           style={globalStyles.button}
           onPress={() => handleRecoverPassword(email)}
         >
           <Text style={globalStyles.buttonText}>RECUPERAR</Text>
         </TouchableOpacity>
-      </View>
 
     </View>
   );

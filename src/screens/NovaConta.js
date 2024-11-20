@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import globalStyles from '../styles/globalStyles';
 
 const NovaConta = (props) => {
   const [email, setEmail] = useState('');
@@ -22,7 +23,7 @@ const NovaConta = (props) => {
     setSucessoMessage('');
     if(validarEmail(email)) {
       if(validarSenha(senha, repeteSenha)) {
-        setSucessoMessage('Cadastro realizado com sucesso! (TESTE)')
+        setSucessoMessage('Cadastro realizado com sucesso!')
       } else {
         setErrorMessage('O campo repetir senha difere da senha');
       }
@@ -37,19 +38,21 @@ const NovaConta = (props) => {
         <TouchableOpacity onPress={() => props.navigation.navigate('Login')}>
           <Icon name="arrow-back" size={30} color="lightblue" />
         </TouchableOpacity>
-        <Text style={globalStyles.title}>Nova conta</Text>
+        <Text style={globalStyles.header}>Nova conta</Text>
       </View>
-      <View style={globalStyles.content}>
+
+
+      <View style={globalStyles.area}>
        <Text style={globalStyles.label}>E-mail</Text>
         <TextInput
-          style={globalStyles.input}
+          style={globalStyles.inputs}
           placeholder="usuario@dominio.com"
           value={email}
           onChangeText={text => setEmail(text)}
         />
         <Text style={globalStyles.label}>Senha</Text>
         <TextInput
-          style={globalStyles.input}
+          style={globalStyles.inputs}
           placeholder="Senha"
           secureTextEntry
           value={password}
@@ -57,21 +60,22 @@ const NovaConta = (props) => {
         />
         <Text style={globalStyles.label}>Repetir senha</Text>
         <TextInput
-          style={globalStyles.input}
+          style={globalStyles.inputs}
           placeholder="Repetir senha"
           secureTextEntry
           value={repeatPassword}
           onChangeText={text => setRepeatPassword(text)}
         />
-        {errorMessage ? <Text style={globalStyles.errorMessage}>{errorMessage}</Text> : null}
+        {errorMessage ? <Text style={globalStyles.errorText}>{errorMessage}</Text> : null}
         {sucessoMessage ? <Text style={globalStyles.sucessoMessage}>{sucessoMessage}</Text> : null}
-        <TouchableOpacity
+       
+      </View>
+      <TouchableOpacity
           style={globalStyles.button}
           onPress={() => {handleRegister(email, password, repeatPassword)}}
         >
           <Text style={globalStyles.buttonText}>CADASTRAR</Text>
         </TouchableOpacity>
-      </View>
     </View>
   );
 };
