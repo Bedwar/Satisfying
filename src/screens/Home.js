@@ -23,9 +23,9 @@ const Home = (props) => {
         
         <View style={globalStyles.container}>
         
-            <View style={globalStyles.searchContainer}>
-                <View style={globalStyles.inputContainer}>
-                    <Image source={require('../../assets/icons/search-icon.png')} style={globalStyles.searchIcon} />
+            <View style={globalStyles.header}>
+                <View style={globalStyles.inputs}>
+                    <Image source={require('../../assets/icons/search-icon.png')} style={globalStyles.searchIcon} size={10} />
                     <TextInput
                         style={globalStyles.input}
                         placeholder="Insira o termo de busca..."
