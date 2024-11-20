@@ -7,7 +7,7 @@ import {launchCamera, launchImageLibrary } from 'react-native-image-picker';
 import DatePicker from 'react-native-date-picker';
 import Modal from 'react-native-modal';
 
-const ModifySearch = (props) => {
+const ModificarPesquisa = (props) => {
 
     const [date, setDate] = useState(new Date());
     const [nomePesquisa, setNomePesquisa] = useState('');
@@ -31,60 +31,33 @@ const ModifySearch = (props) => {
         }
     };
 
-    const handleImagePicker = () => {
-        Alert.alert(
-        "Selecione",
-        "Informe de onde voce quer pegar a foto",
-        [
-            {
-            text: "Galeria",
-            onPress: () => pickImageFromGalery(),
-            style: "default"
-            },
-            {
-            text: "Camera",
-            onPress: () => pickImageFromCamera(),
-            style: "default"
-            }
-        ],
-        {
-            cancelable: true
-        }
-        )
-    }
+ 
 
-    const pickImageFromGalery = async () => {
-        const result = await launchImageLibrary(options={mediaType: 'photo'});
-    }
-
-    const pickImageFromCamera = async () => {
-        const result = await launchCamera(options={mediaType: 'photo'});
-    }
 
     return (
-        <View style={styles.container}>
+        <View style={globalStyles.container}>
 
-            <View style={styles.header}>
+            <View style={globalStyles.header}>
                 <TouchableOpacity onPress={() => props.navigation.pop()}>
                 <Icon name="arrow-back" size={30} color="lightblue" />
                 </TouchableOpacity>
-                <Text style={styles.title}>Modificar pesquisa</Text>
+                <Text style={globalStyles.title}>Modificar pesquisa</Text>
             </View>
             
-            <View style={styles.content}>
+            <View style={globalStyles.content}>
             
-                <Text style={styles.label}>Nome</Text>
+                <Text style={globalStyles.label}>Nome</Text>
                 <TextInput
-                    style={styles.input}
+                    style={globalStyles.input}
                     placeholder="Preencha o nome da pesquisa"
                     value={nomePesquisa}
                     onChangeText={setNomePesquisa}
                 />
-                {errorNome ? <Text style={styles.errorMessage}>{errorNome}</Text> : null}
+                {errorNome ? <Text style={globalStyles.errorMessage}>{errorNome}</Text> : null}
 
-                <Text style={styles.label}>Data</Text>
+                <Text style={globalStyles.label}>Data</Text>
                 <TextInput
-                    style={styles.input}
+                    style={globalStyles.input}
                     value={format(date, 'dd/MM/yyyy')}
                     right={<TextInput.Icon icon="calendar-month" size={35} style={{paddingTop: 10}} onPress={() => setOpen(true)}/>}
                     editable={false}
@@ -103,29 +76,29 @@ const ModifySearch = (props) => {
                     setOpen(false)
                     }}
                 />
-                {errorData ? <Text style={styles.errorMessage}>{errorData}</Text> : null}
+                {errorData ? <Text style={globalStyles.errorMessage}>{errorData}</Text> : null}
 
-                <Text style={styles.label}>Imagem</Text>
-                <TouchableOpacity style={styles.imageButton} onPress={handleImagePicker}>
+                <Text style={globalStyles.label}>Imagem</Text>
+                <TouchableOpacity style={globalStyles.imageButton} onPress={handleImagePicker}>
                 <Text style={{ color: 'black' }}>Câmera/Galeria de imagens</Text>
                 </TouchableOpacity>
                 
-                {sucessoMessage ? <Text style={styles.sucessoMessage}>{sucessoMessage}</Text> : null}
+                {sucessoMessage ? <Text style={globalStyles.sucessoMessage}>{sucessoMessage}</Text> : null}
 
             </View>
         
             <View style={{flexDirection: 'row', flex: 1}}>
                 <View style={{flexDirection: 'column', flex: 8 }}> 
                     <TouchableOpacity
-                        style={styles.button}
+                        style={globalStyles.button}
                         onPress={() => handleModificarPesquisa(nomePesquisa, format(date, 'dd/MM/yyyy'))}
                         >
-                        <Text style={styles.buttonText}>SALVAR</Text>
+                        <Text style={globalStyles.buttonText}>SALVAR</Text>
                     </TouchableOpacity>
                 </View>
                 <View style={{flexDirection: 'column', flex: 2 }}>
                     <TouchableOpacity
-                        style={styles.btnDelete}
+                        style={globalStyles.btnDelete}
                         onPress={() => setModalVisible(true)}
                         >
                             <Icon name="delete" size={30} color="white" />
@@ -134,19 +107,19 @@ const ModifySearch = (props) => {
                 </View>
             </View>
 
-            <Modal isVisible={isModalVisible} style={styles.modal}>
-                <View style={styles.modalContent}>
-                    <Text style={styles.modalText}>Tem certeza de apagar essa pesquisa?</Text>
-                    <View style={styles.buttonContainer}>
+            <Modal isVisible={isModalVisible} style={globalStyles.modal}>
+                <View style={globalStyles.modalContent}>
+                    <Text style={globalStyles.modalText}>Tem certeza de apagar essa pesquisa?</Text>
+                    <View style={globalStyles.buttonContainer}>
                     <TouchableOpacity 
-                        style={[styles.modalButton, { backgroundColor: 'tomato' }]}
+                        style={[globalStyles.modalButton, { backgroundColor: 'tomato' }]}
                         onPress={() => setModalVisible(false)}>
-                        <Text style={styles.modalButtonText}>SIM</Text>
+                        <Text style={globalStyles.modalButtonText}>SIM</Text>
                     </TouchableOpacity>
                     <TouchableOpacity
-                        style={[styles.modalButton, { backgroundColor: 'darkslateblue' }]}
+                        style={[globalStyles.modalButton, { backgroundColor: 'darkslateblue' }]}
                         onPress={() => setModalVisible(false)}>
-                        <Text style={styles.modalButtonText}>CANCELAR</Text>
+                        <Text style={globalStyles.modalButtonText}>CANCELAR</Text>
                     </TouchableOpacity>
                     </View>
                 </View>
@@ -274,4 +247,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default ModifySearch;
+export default ModificarPesquisa;

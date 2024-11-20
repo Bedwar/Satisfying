@@ -35,10 +35,10 @@ const Drawer = (props) => {
       drawerContent={(props) =>
 
         <DrawerContentScrollView {...props}>
-          <View style={styles.emailContainer}>
-            <Text style={styles.emailText}>{email}</Text>
+          <View style={globalStyles.emailContainer}>
+            <Text style={globalStyles.emailText}>{email}</Text>
           </View>
-          <View style={styles.separator}></View>
+          <View style={globalStyles.separator}></View>
           <DrawerItem icon={({ focused, color, size }) => (
             <Icon
               name="description"
@@ -47,13 +47,13 @@ const Drawer = (props) => {
             />
           )} labelStyle={{ color: 'white', fontSize: 25, fontFamily: 'AveriaLibre-Regular' }} label="Pesquisas" onPress={() => { props.navigation.goBack() }} />
 
-          <DrawerItem style={styles.sair} icon={({ focused, color, size }) => (
+          <DrawerItem style={globalStyles.sair} icon={({ focused, color, size }) => (
             <Icon
               name="login"
               size={size}
               color={focused ? '#7cc' : '#ccc'}
             />
-          )} labelStyle={styles.labelSair} label="Sair" onPress={() => { props.navigation.popToTop() }} />
+          )} labelStyle={globalStyles.labelSair} label="Sair" onPress={() => { props.navigation.popToTop() }} />
         </DrawerContentScrollView>
 
       }>
@@ -63,30 +63,6 @@ const Drawer = (props) => {
   );
 };
 
-const styles = StyleSheet.create({
-  emailContainer: {
-    paddingVertical: 20,
-  },
-  emailText: {
-    fontSize: 25,
-    color: 'white',
-    marginBottom: 5,
-    marginLeft: 25,
-    fontFamily: 'AveriaLibre-Regular',
-  },
-  separator: {
-    borderBottomColor: 'white',
-    borderBottomWidth: 1,
-    marginHorizontal: 25,
-  },
-  labelSair: {
-    color: 'white',
-    fontSize: 25,
-    fontFamily: 'AveriaLibre-Regular',
-  },
-  sair: {
-    marginTop: 135,
-  }
-});
+
 
 export default Drawer;

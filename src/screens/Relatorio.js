@@ -14,16 +14,16 @@ const Relatorio = (props) => {
   ];
 
   return (
-    <View style={styles.container}>
+    <View style={globalStyles.container}>
 
-        <View style={styles.header}>
+        <View style={globalStyles.header}>
             <TouchableOpacity onPress={() => props.navigation.goBack()}>
                 <Icon name="arrow-back" size={30} color="lightblue" />
             </TouchableOpacity>
-            <Text style={styles.title}>Relatorio</Text>
+            <Text style={globalStyles.title}>Relatorio</Text>
         </View>
 
-        <View style={styles.content}>
+        <View style={globalStyles.content}>
             <PieChart
                 data={data}
                 width={350}
@@ -44,30 +44,5 @@ const Relatorio = (props) => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#6A5ACD',
-    },
-    header: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        marginBottom: 15,
-        backgroundColor: 'darkslateblue',
-        height: 60,
-        paddingHorizontal: 20,
-    },
-    title: {
-        fontSize: 35,
-        color: 'white',
-        marginLeft: 10,
-        fontFamily: 'AveriaLibre-Regular'
-    },
-    content: {
-        justifyContent: 'center',
-        alignItems: 'center'
-    },
-});
 
 export default Relatorio;

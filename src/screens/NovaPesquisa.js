@@ -60,29 +60,29 @@ const NovaPesquisa = ({ navigation }) => {
   }
 
   return (
-    <View style={styles.container}>
+    <View style={globalStyles.container}>
 
-      <View style={styles.header}>
+      <View style={globalStyles.header}>
         <TouchableOpacity onPress={() => navigation.pop()}>
           <Icon name="arrow-back" size={30} color="lightblue" />
         </TouchableOpacity>
-        <Text style={styles.title}>Nova pesquisa</Text>
+        <Text style={globalStyles.title}>Nova pesquisa</Text>
       </View>
       
-      <View style={styles.content}>
+      <View style={globalStyles.content}>
        
-        <Text style={styles.label}>Nome</Text>
+        <Text style={globalStyles.label}>Nome</Text>
         <TextInput
-          style={styles.input}
+          style={globalStyles.input}
           placeholder="Preencha o nome da pesquisa"
           value={nomePesquisa}
           onChangeText={setNomePesquisa}
         />
-        {errorNome ? <Text style={styles.errorMessage}>{errorNome}</Text> : null}
+        {errorNome ? <Text style={globalStyles.errorMessage}>{errorNome}</Text> : null}
 
-        <Text style={styles.label}>Data</Text>
+        <Text style={globalStyles.label}>Data</Text>
         <TextInput
-          style={styles.input}
+          style={globalStyles.input}
           value={format(date, 'dd/MM/yyyy')}
           right={<TextInput.Icon icon="calendar-month" size={35} style={{paddingTop: 10}} onPress={() => setOpen(true)}/>}
           editable={false}
@@ -103,103 +103,26 @@ const NovaPesquisa = ({ navigation }) => {
         }}
         />
         
-        {errorData ? <Text style={styles.errorMessage}>{errorData}</Text> : null}
+        {errorData ? <Text style={globalStyles.errorMessage}>{errorData}</Text> : null}
 
-        <Text style={styles.label}>Imagem</Text>
-        <TouchableOpacity style={styles.imageButton} onPress={handleImagePicker}>
+        <Text style={globalStyles.label}>Imagem</Text>
+        <TouchableOpacity style={globalStyles.imageButton} onPress={handleImagePicker}>
           <Text style={{ color: 'black' }}>Câmera/Galeria de imagens</Text>
         </TouchableOpacity>
         
         
-        {sucessoMessage ? <Text style={styles.sucessoMessage}>{sucessoMessage}</Text> : null}
+        {sucessoMessage ? <Text style={globalStyles.sucessoMessage}>{sucessoMessage}</Text> : null}
 
         <TouchableOpacity
-          style={styles.button}
+          style={globalStyles.button}
           onPress={() => handleCadastroPesquisa(nomePesquisa, format(date, 'dd/MM/yyyy'))}
         >
-          <Text style={styles.buttonText}>CADASTRAR</Text>
+          <Text style={globalStyles.buttonText}>CADASTRAR</Text>
         </TouchableOpacity>
       </View>
     </View>
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#6A5ACD',
-  },
-  header: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginBottom: 5,
-    backgroundColor: 'darkslateblue',
-    height: 60,
-    paddingHorizontal: 20,
-  },
-  title: {
-    fontSize: 35,
-    color: 'white',
-    marginLeft: 10,
-    fontFamily: 'AveriaLibre-Regular'
-  },
-  content: {
-    marginTop: 20,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  label: {
-    fontSize: 18,
-    color: 'white',
-    alignSelf: 'flex-start',
-    marginHorizontal: 40,
-    fontFamily: 'AveriaLibre-Regular'
-  },
-  errorMessage: {
-    color: 'tomato',
-    fontSize: 15,
-    fontFamily: 'AveriaLibre-Regular'
-  },
-  sucessoMessage: {
-    color: 'limegreen',
-    marginBottom: 1,
-    fontSize: 15,
-    fontFamily: 'AveriaLibre-Regular'
-  },
-  input: {
-    width: '80%',
-    marginBottom: 10,
-    backgroundColor: 'white',
-    height: 35,
-    paddingHorizontal: 15,
-    paddingVertical: 5,
-    fontFamily: 'AveriaLibre-Regular'
-  },
-  imageButton: {
-    backgroundColor: 'white',
-    height: 55,
-    width: '50%',
-    fontFamily: 'AveriaLibre-Regular',
-    justifyContent: 'center',
-    alignItems: 'center',
-    alignSelf: 'flex-start',
-    color: 'grey',
-    marginBottom: 30,
-    marginTop: 10,
-    marginHorizontal: 40,
-  },
-  button: {
-    backgroundColor: '#5cdb95',
-    width: '80%',
-    height: 35,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  buttonText: {
-    fontSize: 20,
-    color: 'white',
-    fontFamily: 'AveriaLibre-Regular'
-  },
-});
 
 export default NovaPesquisa;
