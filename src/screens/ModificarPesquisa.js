@@ -6,6 +6,7 @@ import { format } from 'date-fns';
 import {launchCamera, launchImageLibrary } from 'react-native-image-picker';
 import DatePicker from 'react-native-date-picker';
 import Modal from 'react-native-modal';
+import globalStyles from '../styles/globalStyles';
 
 const ModificarPesquisa = (props) => {
 

@@ -28,11 +28,11 @@ const Login = (props) => {
   };
 
   const showHome = (email, password) => {
-    if (validarEmail(email) && password !== '') {
+   // if (validarEmail(email) && password !== '') {
       props.navigation.navigate('Drawer', { email: email });
-    } else {
-      handleError();
-    }
+   // } else {
+    //  handleError();
+   // }
   };
 
   return (

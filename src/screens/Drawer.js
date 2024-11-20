@@ -2,6 +2,7 @@ import { createDrawerNavigator, DrawerItem, DrawerContentScrollView } from '@rea
 import { View, Text, StyleSheet } from 'react-native';
 import Home from '../screens/Home';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import globalStyles from '../styles/globalStyles';
 
 const DrawerNavigator = createDrawerNavigator();
 
@@ -35,8 +36,8 @@ const Drawer = (props) => {
       drawerContent={(props) =>
 
         <DrawerContentScrollView {...props}>
-          <View style={globalStyles.emailContainer}>
-            <Text style={globalStyles.emailText}>{email}</Text>
+          <View style={globalStyles.inputs}>
+            <Text style={globalStyles.inputs}>{email}</Text>
           </View>
           <View style={globalStyles.separator}></View>
           <DrawerItem icon={({ focused, color, size }) => (

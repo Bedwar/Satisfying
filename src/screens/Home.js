@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text, TextInput, TouchableOpacity, ScrollView, StyleSheet, Image } from 'react-native';
+import globalStyles from '../styles/globalStyles';
 
 const Home = (props) => {
 
