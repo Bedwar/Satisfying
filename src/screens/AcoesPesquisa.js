@@ -5,7 +5,8 @@ import globalStyles from '../styles/globalStyles';
 
 const AcoesPesquisa = (props) => {
 
-  const titulo = props.route.params.screen;
+  const research = props.route.params.research;
+  const titulo = research.title;
 
   return (
     <View style={{ flex: 1, backgroundColor: '#6A5ACD' }}>
@@ -17,7 +18,7 @@ const AcoesPesquisa = (props) => {
       </View>
         
         <View style={globalStyles.buttonsContainer}>
-            <TouchableOpacity style={globalStyles.button} onPress={() => props.navigation.navigate('ModificarPesquisa')}>
+            <TouchableOpacity style={globalStyles.button} onPress={() => props.navigation.navigate('ModificarPesquisa', {research: research})}>
             <Icon name="edit-document" size={30} color="white" />
             <Text style={globalStyles.buttonText}>Modificar</Text>
             </TouchableOpacity>

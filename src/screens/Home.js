@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, TextInput, TouchableOpacity, ScrollView, StyleSheet, Image } from 'react-native';
 import globalStyles from '../styles/globalStyles';
+import CardPesquisa from '../components/CardPesquisa';
 
 const Home = (props) => {
 
@@ -15,8 +16,8 @@ const Home = (props) => {
         props.navigation.navigate('NovaPesquisa')
     }
 
-    const showAcoesPesquisa = (titulo, data) => {
-        props.navigation.navigate('AcoesPesquisa', { screen: titulo, date: data })
+    const showAcoesPesquisa = (research) => {
+        props.navigation.navigate('AcoesPesquisa', { research: research })
     }
 
     return (
@@ -24,15 +25,13 @@ const Home = (props) => {
         <View style={globalStyles.container}>
         
             <View style={globalStyles.header}>
-                <View style={globalStyles.inputs}>
+                <View style={globalStyles.container}>
                     <Image source={require('../../assets/icons/search-icon.png')} style={globalStyles.searchIcon} size={10} />
                     <TextInput
-                        style={globalStyles.input}
+                        style={globalStyles.inputs}
                         placeholder="Insira o termo de busca..."
                     />
                 </View>
-                <TouchableOpacity style={globalStyles.searchButton}>
-                </TouchableOpacity>
             </View>
 
             <ScrollView
@@ -44,10 +43,8 @@ const Home = (props) => {
                     <TouchableOpacity 
                         key={index}
                         style={globalStyles.researchCard}
-                        onPress={() => {showAcoesPesquisa(research.title)}} >
-                        <Image source={research.image} style={globalStyles.cardImage} resizeMode="contain" />
-                        <Text style={[globalStyles.title, { color: '#3F92C5' }]}>{research.title}</Text>
-                        <Text style={globalStyles.date}>{research.date}</Text>
+                        onPress={() => {showAcoesPesquisa(research)}} >
+                            <CardPesquisa item={research} />
                     </TouchableOpacity>
                 ))}
             </ScrollView>

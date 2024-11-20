@@ -5,6 +5,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import { format } from 'date-fns';
 import {launchCamera, launchImageLibrary, ImageLibraryOptions} from 'react-native-image-picker';
 import DatePicker from 'react-native-date-picker';
+import globalStyles from '../styles/globalStyles';
 
 const NovaPesquisa = ({ navigation }) => {
 
@@ -14,20 +15,21 @@ const NovaPesquisa = ({ navigation }) => {
   const [errorNome, setErrorNome] = useState('');
   const [errorData, setErrorData] = useState('');
   const [sucessoMessage, setSucessoMessage] = useState('');
+  const [image, setImage] = useState(null);
 
   const handleCadastroPesquisa = (nome, data) => {
-    setErrorNome(''); setErrorData('');setSucessoMessage('');
-    if(nome != '' && data != '') {
-        setSucessoMessage('Nova pesquisa registrada!')
+    setErrorNome(''); setErrorData(''); setSucessoMessage('');
+    if (nome !== '' && data !== '') {
+      setSucessoMessage('Nova pesquisa registrada!')
     } else {
     if(nome == '') {
         setErrorNome('Preencha o nome da pesquisa');
-    }
+      }
     if(data == '') {
         setErrorData('Preencha a data');
+      }
     }
-    }
-};
+  };
 
   const handleImagePicker = () => {
     Alert.alert(
@@ -52,11 +54,15 @@ const NovaPesquisa = ({ navigation }) => {
   }
 
   const pickImageFromGalery = async () => {
-    const result = await launchImageLibrary(options={mediaType: 'photo'});
+    const result = await launchImageLibrary(options = { mediaType: 'photo' });
+    const assets = result?.assets[0];
+    setImage(assets?.uri);
   }
 
   const pickImageFromCamera = async () => {
-    const result = await launchCamera(options={mediaType: 'photo'});
+    const result = await launchCamera(options = { mediaType: 'photo' });
+    const assets = result?.assets[0];
+    setImage(assets?.img);
   }
 
   return (
@@ -78,7 +84,7 @@ const NovaPesquisa = ({ navigation }) => {
           value={nomePesquisa}
           onChangeText={setNomePesquisa}
         />
-        {errorNome ? <Text style={globalStyles.errorMessage}>{errorNome}</Text> : null}
+        {errorNome ? <Text style={globalStyles.errorText}>{errorNome}</Text> : null}
 
         <Text style={globalStyles.label}>Data</Text>
         <TextInput
@@ -102,15 +108,17 @@ const NovaPesquisa = ({ navigation }) => {
           setOpen(false)
         }}
         />
-        
-        {errorData ? <Text style={globalStyles.errorMessage}>{errorData}</Text> : null}
+
+        {errorData ? <Text style={globalStyles.errorText}>{errorData}</Text> : null}
 
         <Text style={globalStyles.label}>Imagem</Text>
         <TouchableOpacity style={globalStyles.imageButton} onPress={handleImagePicker}>
-          <Text style={{ color: 'black' }}>Câmera/Galeria de imagens</Text>
-        </TouchableOpacity>
-        
-        
+                    { image ? 
+                        <Image source={image} /> : 
+                        <Text style={{ color: 'black' }}>Câmera/Galeria de imagens</Text> }
+                </TouchableOpacity>
+
+
         {sucessoMessage ? <Text style={globalStyles.sucessoMessage}>{sucessoMessage}</Text> : null}
 
         <TouchableOpacity
