@@ -161,22 +161,13 @@ const ModificarPesquisa = (props) => {
       </View>
 
       <View style={[changeSearchStyles.btnContainer]}>
-        <View style={changeSearchStyles.button1}>
-          <TouchableOpacity
-            onPress={() =>
+        
+            <TouchableOpacity style={globalStyles.button} onPress={() =>
               handleModificarPesquisa(nomePesquisa, format(date, 'dd/MM/yyyy'))
             }>
-            <Text style={changeSearchStyles.buttonText}>SALVAR</Text>
-          </TouchableOpacity>
-        </View>
-        <View style={[changeSearchStyles.button2]}>
-          <TouchableOpacity
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-            }}
-            onPress={() => setModalVisible(true)}>
-            <Icon name="delete" size={30} color="white" />
+        <Text style={globalStyles.buttonText}>SALVAR</Text>
+      </TouchableOpacity>
+        <Icon name="delete" size={30} color="white" />
             <Text
               style={{
                 color: 'white',
@@ -185,7 +176,19 @@ const ModificarPesquisa = (props) => {
               }}>
               Apagar
             </Text>
+
+            
+        <View style={[changeSearchStyles.button2]}>
+          <TouchableOpacity
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+            }}
+            onPress={() => setModalVisible(true)}>
+            <Icon name="delete" size={30} color="white" />
+            
           </TouchableOpacity>
+          
         </View>
       </View>
 
