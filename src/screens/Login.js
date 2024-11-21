@@ -40,8 +40,8 @@ const Login = (props) => {
     <ScrollView contentContainerStyle={globalStyles.container}>
       
       
-      <View style={globalStyles.header}>
-        <Text style={globalStyles.header}> Satisfying.you </Text>
+      <View style={globalStyles.headerLogin}>
+        <Text style={globalStyles.headerLogin}> Satisfying.you </Text>
         <Icon name="mood" size={40} color="white" />
       </View>
 

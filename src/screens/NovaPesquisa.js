@@ -1,16 +1,17 @@
+import { format } from 'date-fns';
 import React, { useState } from 'react';
-import { Alert, View, Text, TouchableOpacity, Image, StyleSheet } from 'react-native';
+import { Alert, Image, Text, TouchableOpacity, View } from 'react-native';
+import DatePicker from 'react-native-date-picker';
+import { launchCamera, launchImageLibrary } from 'react-native-image-picker';
 import { TextInput } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import { format } from 'date-fns';
-import {launchCamera, launchImageLibrary, ImageLibraryOptions} from 'react-native-image-picker';
-import DatePicker from 'react-native-date-picker';
-import globalStyles from '../styles/globalStyles';
 
-const NovaPesquisa = ({ navigation }) => {
+import newSearchStyles from '../styles/screens/novaPesquisaStyles';
 
+
+export default function NovaPesquisa(props) {
   const [date, setDate] = useState(new Date());
-  const [open, setOpen] = useState(false)
+  const [open, setOpen] = useState(false);
   const [nomePesquisa, setNomePesquisa] = useState('');
   const [errorNome, setErrorNome] = useState('');
   const [errorData, setErrorData] = useState('');
@@ -18,14 +19,16 @@ const NovaPesquisa = ({ navigation }) => {
   const [image, setImage] = useState(null);
 
   const handleCadastroPesquisa = (nome, data) => {
-    setErrorNome(''); setErrorData(''); setSucessoMessage('');
+    setErrorNome('');
+    setErrorData('');
+    setSucessoMessage('');
     if (nome !== '' && data !== '') {
-      setSucessoMessage('Nova pesquisa registrada!')
+      setSucessoMessage('Nova pesquisa registrada!');
     } else {
-    if(nome == '') {
+      if (nome == '') {
         setErrorNome('Preencha o nome da pesquisa');
       }
-    if(data == '') {
+      if (data == '') {
         setErrorData('Preencha a data');
       }
     }
@@ -33,104 +36,132 @@ const NovaPesquisa = ({ navigation }) => {
 
   const handleImagePicker = () => {
     Alert.alert(
-      "Selecione",
-      "Informe de onde voce quer pegar a foto",
+      'Selecione',
+      'Informe de onde voce quer pegar a foto',
       [
         {
-          text: "Galeria",
+          text: 'Galeria',
           onPress: () => pickImageFromGalery(),
-          style: "default"
+          style: 'default',
         },
         {
-          text: "Camera",
+          text: 'Camera',
           onPress: () => pickImageFromCamera(),
-          style: "default"
-        }
+          style: 'default',
+        },
       ],
       {
-        cancelable: true
-      }
-    )
-  }
+        cancelable: true,
+      },
+    );
+  };
 
   const pickImageFromGalery = async () => {
-    const result = await launchImageLibrary(options = { mediaType: 'photo' });
+    const result = await launchImageLibrary((options = {mediaType: 'photo'}));
     const assets = result?.assets[0];
     setImage(assets?.uri);
-  }
+  };
 
   const pickImageFromCamera = async () => {
-    const result = await launchCamera(options = { mediaType: 'photo' });
+    const result = await launchCamera((options = {mediaType: 'photo'}));
     const assets = result?.assets[0];
-    setImage(assets?.img);
-  }
+    setImage(assets?.uri);
+  };
 
   return (
-    <View style={globalStyles.container}>
-
-      <View style={globalStyles.header}>
-        <TouchableOpacity onPress={() => navigation.pop()}>
-          <Icon name="arrow-back" size={30} color="lightblue" />
+    <View style={newSearchStyles.container}>
+      <View style={newSearchStyles.header}>
+        <TouchableOpacity onPress={() => props.navigation.pop()}>
+          <Icon name="arrow-back" size={30} style={newSearchStyles.headerImg} />
         </TouchableOpacity>
-        <Text style={globalStyles.title}>Nova pesquisa</Text>
+        <Text style={newSearchStyles.title}>Nova pesquisa</Text>
       </View>
-      
-      <View style={globalStyles.content}>
-       
-        <Text style={globalStyles.label}>Nome</Text>
-        <TextInput
-          style={globalStyles.input}
-          placeholder="Preencha o nome da pesquisa"
-          value={nomePesquisa}
-          onChangeText={setNomePesquisa}
-        />
-        {errorNome ? <Text style={globalStyles.errorText}>{errorNome}</Text> : null}
 
-        <Text style={globalStyles.label}>Data</Text>
-        <TextInput
-          style={globalStyles.input}
-          value={format(date, 'dd/MM/yyyy')}
-          right={<TextInput.Icon icon="calendar-month" size={35} style={{paddingTop: 10}} onPress={() => setOpen(true)}/>}
-          editable={false}
-        />
-        <DatePicker
-        title={'Selecione a data'}
-        modal
-        locale='pt'
-        mode='date'
-        open={open}
-        date={date}
-        onConfirm={(date) => {
-          setOpen(false)
-          setDate(date)
-        }}
-        onCancel={() => {
-          setOpen(false)
-        }}
-        />
+      <View style={newSearchStyles.content}>
+        <View style={newSearchStyles.inputWrapper}>
+          <Text style={newSearchStyles.label}>Nome</Text>
+          <TextInput
+            style={newSearchStyles.input}
+            placeholder="Preencha o nome da pesquisa"
+            value={nomePesquisa}
+            onChangeText={setNomePesquisa}
+          />
+          {errorNome ? (
+            <Text style={newSearchStyles.errorText}>{errorNome}</Text>
+          ) : null}
+        </View>
 
-        {errorData ? <Text style={globalStyles.errorText}>{errorData}</Text> : null}
+        <View style={newSearchStyles.inputWrapper}>
+          <Text style={newSearchStyles.label}>Data</Text>
+          <TextInput
+            value={format(date, 'dd/MM/yyyy')}
+            inlineImageLeft="calendar-month"
+            right={
+              <TextInput.Icon
+                icon="calendar-month"
+                size={35}
+                color={'#00000077'}
+                style={newSearchStyles.dateIcon}
+                onPress={() => setOpen(true)}
+              />
+            }
+            editable={false}
+          />
+          <DatePicker
+            title={'Selecione a data'}
+            modal
+            locale="pt"
+            mode="date"
+            open={open}
+            date={date}
+            onConfirm={date => {
+              setOpen(false);
+              setDate(date);
+            }}
+            onCancel={() => {
+              setOpen(false);
+            }}
+          />
 
-        <Text style={globalStyles.label}>Imagem</Text>
-        <TouchableOpacity style={globalStyles.imageButton} onPress={handleImagePicker}>
-                    { image ? 
-                        <Image source={image} /> : 
-                        <Text style={{ color: 'black' }}>Câmera/Galeria de imagens</Text> }
-                </TouchableOpacity>
+          {errorData ? (
+            <Text style={newSearchStyles.errorText}>{errorData}</Text>
+          ) : null}
+        </View>
 
+        <View style={newSearchStyles.inputWrapper}>
+          <Text style={newSearchStyles.label}>Imagem</Text>
+          <TouchableOpacity
+            style={newSearchStyles.imageTouchable}
+            onPress={handleImagePicker}>
+            {image ? (
+              <Image
+                source={{uri: image}}
+                style={newSearchStyles.pickedImage}
+              />
+            ) : (
+              <Text style={newSearchStyles.imageButtonText}>
+                Câmera/Galeria de imagens
+              </Text>
+            )}
+          </TouchableOpacity>
 
-        {sucessoMessage ? <Text style={globalStyles.sucessoMessage}>{sucessoMessage}</Text> : null}
+          {sucessoMessage ? (
+            <Text style={newSearchStyles.sucessoMessage}>{sucessoMessage}</Text>
+          ) : null}
+        </View>
+      </View>
 
+      <View style={newSearchStyles.btnContainer}>
         <TouchableOpacity
-          style={globalStyles.button}
-          onPress={() => handleCadastroPesquisa(nomePesquisa, format(date, 'dd/MM/yyyy'))}
-        >
-          <Text style={globalStyles.buttonText}>CADASTRAR</Text>
+          style={newSearchStyles.button}
+          onPress={() =>
+            handleCadastroPesquisa(nomePesquisa, format(date, 'dd/MM/yyyy'))
+          }>
+          <Text style={newSearchStyles.buttonText}>CADASTRAR</Text>
         </TouchableOpacity>
       </View>
     </View>
   );
-};
+}
 
-
-export default NovaPesquisa;
+// export default NovaPesquisa;

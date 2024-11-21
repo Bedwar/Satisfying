@@ -1,7 +1,9 @@
 import React from 'react';
-import { View, Text, TextInput, TouchableOpacity, ScrollView, StyleSheet, Image } from 'react-native';
-import globalStyles from '../styles/globalStyles';
+import { ScrollView, Text, TouchableOpacity, View } from 'react-native';
+import { TextInput } from 'react-native-paper';
+
 import CardPesquisa from '../components/CardPesquisa';
+import globalStyles from '../styles/globalStyles';
 
 const Home = (props) => {
 
@@ -12,57 +14,50 @@ const Home = (props) => {
         { title: 'MENINAS CPU', date: '01/04/2022', image: require('../../assets/images/meninas-icon.png') }
     ];
 
-    const showNovaPesquisa = () => {
-        props.navigation.navigate('NovaPesquisa')
-    }
+  const showNovaPesquisa = () => {
+    props.navigation.navigate('NovaPesquisa');
+  };
 
-    const showAcoesPesquisa = (research) => {
-        props.navigation.navigate('AcoesPesquisa', { research: research })
-    }
+  const showAcoesPesquisa = research => {
+    props.navigation.navigate('AcoesPesquisa', {research: research});
+  };
 
-    return (
-        
-        <View style={globalStyles.container}>
-        
-            <View style={globalStyles.header}>
-                <View style={globalStyles.searchBar}>
-                    <Image source={require('../../assets/icons/search-icon.png')} style={globalStyles.searchIcon}/>
-                    <View style={[globalStyles.inputs], {}}>
-                        <TextInput
-                            style={globalStyles.inputText}
-                            placeholder="Insira o termo de busca..."
-                        />
-                    </View>
-                </View>
+  return (
+    <View style={globalStyles.container}>
+      <View
+        style={{...globalStyles.header, ...{backgroundColor: 'transparent'}}}>
+        <TextInput
+          style={globalStyles.searchBar}
+          left={<TextInput.Icon icon="magnify" />}
+          placeholder="Insira o termo de busca..."
+        />
 
-                <TouchableOpacity style={globalStyles.searchButton}>
-                </TouchableOpacity>
-            </View>
+        <TouchableOpacity style={globalStyles.searchButton}></TouchableOpacity>
+      </View>
 
-            <ScrollView
-                horizontal={true} 
-                showsHorizontalScrollIndicator={false} 
-                style={[globalStyles.scrollContainer], {marginTop: 58}}
-            >
-                {researchData.map((research, index) => (
-                    <TouchableOpacity 
-                        key={index}
-                        style={globalStyles.researchCard}
-                        onPress={() => {showAcoesPesquisa(research)}} >
-                            <CardPesquisa item={research} />
-                    </TouchableOpacity>
-                ))}
-            </ScrollView>
-
+      <ScrollView
+        horizontal={true}
+        showsHorizontalScrollIndicator={false}
+        style={[{marginTop: 58}]}>
+        {researchData.map((research, index) => {
+          return (
             <TouchableOpacity
-                style={globalStyles.button}
-                onPress={showNovaPesquisa} >
-                <Text style={globalStyles.buttonText}>NOVA PESQUISA</Text>
+              key={index}
+              style={globalStyles.researchCard}
+              onPress={() => {
+                showAcoesPesquisa(research);
+              }}>
+              <CardPesquisa item={research} />
             </TouchableOpacity>
-        </View>
-    );
+          );
+        })}
+      </ScrollView>
+
+      <TouchableOpacity style={globalStyles.button} onPress={showNovaPesquisa}>
+        <Text style={globalStyles.buttonText}>NOVA PESQUISA</Text>
+      </TouchableOpacity>
+    </View>
+  );
 };
-
-
 
 export default Home;
