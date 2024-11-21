@@ -50,7 +50,7 @@ const newSearchStyles = StyleSheet.create({
   },
 
   label: {
-    fontSize: 16,
+    fontSize: 14,
     lineHeight: 36,
     fontFamily: fonts.regular,
     color: colors.text,

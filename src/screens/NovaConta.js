@@ -75,11 +75,11 @@ const NovaConta = props => {
         ) : null}
       </View>
       <TouchableOpacity
-        style={newAccStyles.button}
+        style={globalStyles.button}
         onPress={() => {
           handleRegister(email, password, repeatPassword);
         }}>
-        <Text style={newAccStyles.buttonText}>CADASTRAR</Text>
+        <Text style={globalStyles.buttonText}>CADASTRAR</Text>
       </TouchableOpacity>
     </View>
   );

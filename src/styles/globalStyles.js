@@ -30,6 +30,7 @@ const globalStyles = StyleSheet.create({
   // Estilos globais para telas
   container: {
     flex: 1,
+    fontFamily: fonts.bold,
     flexGrow: 1,
     justifyContent: 'center',
     alignItems: 'center',
@@ -158,6 +159,7 @@ const globalStyles = StyleSheet.create({
   },
 
   imageContainer: {
+    fontFamily: fonts.bold,
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
@@ -190,6 +192,7 @@ const globalStyles = StyleSheet.create({
 
   searchBar: {
     backgroundColor: colors.text,
+    fontFamily: fonts.bold,
     width: '100%',
     display: 'flex',
     // flex: 1,

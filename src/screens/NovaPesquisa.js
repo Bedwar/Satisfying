@@ -63,11 +63,7 @@ export default function NovaPesquisa(props) {
     setImage(assets?.uri);
   };
 
-  const pickImageFromCamera = async () => {
-    const result = await launchCamera((options = {mediaType: 'photo'}));
-    const assets = result?.assets[0];
-    setImage(assets?.uri);
-  };
+ 
 
   return (
     <View style={newSearchStyles.container}>
@@ -154,11 +150,11 @@ export default function NovaPesquisa(props) {
 
       <View style={newSearchStyles.btnContainer}>
         <TouchableOpacity
-          style={newSearchStyles.button}
+          style={globalStyles.button}
           onPress={() =>
             handleCadastroPesquisa(nomePesquisa, format(date, 'dd/MM/yyyy'))
           }>
-          <Text style={newSearchStyles.buttonText}>CADASTRAR</Text>
+          <Text style={globalStyles.buttonText}>CADASTRAR</Text>
         </TouchableOpacity>
       </View>
     </View>
