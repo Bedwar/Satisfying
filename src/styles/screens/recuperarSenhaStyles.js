@@ -8,7 +8,6 @@ const recSenhaStyles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     backgroundColor: colors.background,
-    // padding: spacing.large,
   },
 
   header: {
@@ -19,7 +18,6 @@ const recSenhaStyles = StyleSheet.create({
     gap: 10,
     fontFamily: fonts.bold,
     color: colors.text,
-    //marginBottom: spacing.large,
     backgroundColor: colors.darkerBackground,
     width: '100%',
     paddingVertical: 16,
