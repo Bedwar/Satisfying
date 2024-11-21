@@ -17,7 +17,7 @@ const NovaConta = props => {
   };
 
   const validarSenha = (senha, repeteSenha) => {
-    return senha != '' && repeteSenha != '' && senha == repeteSenha;
+    return senha !== '' && repeteSenha !== '' && senha == repeteSenha;
   };
 
   const handleRegister = (email, senha, repeteSenha) => {

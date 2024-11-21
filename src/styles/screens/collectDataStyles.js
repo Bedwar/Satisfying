@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import {colors} from '../globalStyles';
+import {colors, fonts} from '../globalStyles';
 
 const collectDataStyles = StyleSheet.create({
   container: {
@@ -15,6 +15,7 @@ const collectDataStyles = StyleSheet.create({
   question: {
     color: colors.text,
     fontSize: 20,
+    fontFamily: fonts.regular
   },
 
   optionsContainer: {
@@ -31,6 +32,7 @@ const collectDataStyles = StyleSheet.create({
 
   optionText: {
     color: '#fff',
+    fontFamily: fonts.regular
   },
 });
 

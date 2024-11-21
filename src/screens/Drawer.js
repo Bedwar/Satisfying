@@ -1,9 +1,9 @@
-import { createDrawerNavigator, DrawerItem, DrawerContentScrollView } from '@react-navigation/drawer';
-import { View, Text} from 'react-native';
-import Home from '../screens/Home';
+import { createDrawerNavigator, DrawerContentScrollView, DrawerItem } from '@react-navigation/drawer';
+import { Text, View } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-import drawerStyles from '../styles/screens/drawerStyles' ;
+import Home from '../screens/Home';
+import drawerStyles from '../styles/screens/drawerStyles';
 
 const DrawerNavigator = createDrawerNavigator();
 
@@ -15,58 +15,76 @@ const Drawer = (props) => {
     <DrawerNavigator.Navigator
       screenOptions={{
         drawerActiveTintColor: 'darkslateblue',
-        headerTitleStyle: {
-          fontSize: 35,
+        headerTintColor: '#fff',
+        headerTitle: '',
+        drawerLabelStyle: {
+          fontSize: 50,
           color: 'white',
-          marginLeft: 10,
-          fontFamily: 'AveriaLibre-Regular'
+          fontFamily: 'AveriaLibre-Regular',
         },
-        drawerLabelStyle: { fontSize: 50, color: 'white', fontFamily: 'AveriaLibre-Regular' },
-        drawerStyle: { backgroundColor: 'darkslateblue', width: '50%', fontFamily: 'AveriaLibre-Regular' },
+        drawerStyle: {
+          backgroundColor: 'darkslateblue',
+          width: '70%',
+          fontFamily: 'AveriaLibre-Regular',
+        },
         headerBackground: () => (
-          <View style={{
-            alignItems: 'center',
-            marginBottom: 5,
-            backgroundColor: 'darkslateblue',
-            height: 60,
-            paddingHorizontal: 20
-          }} />
+          <View
+            style={{
+              alignItems: 'center',
+              marginBottom: 5,
+              backgroundColor: 'darkslateblue',
+              height: 60,
+              paddingHorizontal: 20,
+            }}
+          />
         ),
       }}
-
-      drawerContent={(props) =>
-
+      drawerContent={props => (
         <DrawerContentScrollView {...props}>
-          <View style={drawerStyles.emailHeader}>
-            <Text style={drawerStyles.text}>{email}</Text>
+          <View style={drawerStyles.emailContainer}>
+            <Text style={drawerStyles.emailText}>{'usuario@dominio.com'}</Text>
           </View>
 
           <View style={drawerStyles.separator}></View>
 
-          <DrawerItem style={drawerStyles.header} icon={({ focused, size }) => (
-            <Icon
-              name="description"
-              size={size}
-              color={focused ? '#7cc' : '#ccc'}
+          <View style={drawerStyles.drawerContainer}>
+            <DrawerItem
+              icon={({focused, color, size}) => (
+                <Icon
+                  name="description"
+                  size={size}
+                  color={focused ? '#7cc' : '#ccc'}
+                />
+              )}
+              labelStyle={drawerStyles.label}
+              label="Pesquisas"
+              onPress={() => {
+                props.navigation.goBack();
+              }}
+              style={{}}
             />
-          )} labelStyle={drawerStyles.text} label="Pesquisas" onPress={() => { props.navigation.goBack() }} />
 
-          <DrawerItem style={drawerStyles.header} icon={({ focused, size }) => (
-            <Icon
-              name="logout"
-              size={size}
-              color={focused ? '#7cc' : '#ccc'}
+            <DrawerItem
+              style={{marginBottom: 50}}
+              icon={({focused, color, size}) => (
+                <Icon
+                  name="login"
+                  size={size}
+                  color={focused ? '#7cc' : '#ccc'}
+                />
+              )}
+              labelStyle={drawerStyles.label}
+              label="Sair"
+              onPress={() => {
+                props.navigation.popToTop();
+              }}
             />
-          )} labelStyle={drawerStyles.text} label="Sair" onPress={() => { props.navigation.popToTop() }} />
+          </View>
         </DrawerContentScrollView>
-
-      }>
+      )}>
       <DrawerNavigator.Screen name="Pesquisas" component={Home} />
-
     </DrawerNavigator.Navigator>
   );
 };
-
-
 
 export default Drawer;

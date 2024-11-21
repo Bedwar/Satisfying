@@ -98,6 +98,41 @@ const changeSearchStyles = StyleSheet.create({
     fontSize: 20,
     paddingVertical: 35,
   },
+
+  modalContent: {
+    alignItems: 'center',
+  },
+  modalView: {
+    backgroundColor: colors.background,
+    width: 350,
+    height: 175,
+    padding: 25,
+    alignContent: 'space-between',
+    justifyContent: 'space-between'
+  },
+  modalText: {
+    fontFamily: fonts.bold,
+    color: colors.text,
+    fontSize: 22,
+    textAlign: 'center'
+  },
+  modalContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    alignItems: 'center'
+  },
+  modalButton: {
+    width: '45%',
+    height: 45,
+    justifyContent: 'center'
+
+  },
+  modalButtonText: {
+    fontFamily: fonts.bold,
+    color: colors.text,
+    fontSize: 18,
+    textAlign: 'center',
+  },
 });
 
 export default changeSearchStyles;
