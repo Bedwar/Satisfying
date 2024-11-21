@@ -1,6 +1,6 @@
 import {StyleSheet} from 'react-native';
 
-import {colors} from '../globalStyles';
+import {colors, fonts} from '../globalStyles';
 
 const thanksStyles = StyleSheet.create({
   container: {
@@ -17,6 +17,7 @@ const thanksStyles = StyleSheet.create({
   title: {
     fontSize: 22,
     color: colors.text,
+    fontFamily: fonts.regular
   },
 });
 

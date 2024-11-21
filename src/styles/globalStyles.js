@@ -130,6 +130,13 @@ const globalStyles = StyleSheet.create({
   errorText: {
     fontSize: 14,
     color: colors.erro,
+    fontFamily: fonts.regular,
+  },
+  sucessoMessage: {
+    fontSize: 14,
+    color: colors.text,
+    fontFamily: fonts.regular,
+
   },
   linksContainer: {
     flexDirection: 'column',
@@ -184,7 +191,6 @@ const globalStyles = StyleSheet.create({
   searchBar: {
     backgroundColor: colors.text,
     width: '100%',
-    borderRadius: 10,
     display: 'flex',
     // flex: 1,
     // flexDirection: 'row',

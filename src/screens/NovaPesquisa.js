@@ -7,6 +7,7 @@ import { TextInput } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import newSearchStyles from '../styles/screens/novaPesquisaStyles';
+import globalStyles from '../styles/globalStyles';
 
 
 export default function NovaPesquisa(props) {
@@ -87,7 +88,7 @@ export default function NovaPesquisa(props) {
             onChangeText={setNomePesquisa}
           />
           {errorNome ? (
-            <Text style={newSearchStyles.errorText}>{errorNome}</Text>
+            <Text style={globalStyles.errorText}>{errorNome}</Text>
           ) : null}
         </View>
 
@@ -124,7 +125,7 @@ export default function NovaPesquisa(props) {
           />
 
           {errorData ? (
-            <Text style={newSearchStyles.errorText}>{errorData}</Text>
+            <Text style={globalStyles.errorText}>{errorData}</Text>
           ) : null}
         </View>
 
@@ -146,7 +147,7 @@ export default function NovaPesquisa(props) {
           </TouchableOpacity>
 
           {sucessoMessage ? (
-            <Text style={newSearchStyles.sucessoMessage}>{sucessoMessage}</Text>
+            <Text style={globalStyles.sucessoMessage}>{sucessoMessage}</Text>
           ) : null}
         </View>
       </View>
