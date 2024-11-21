@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import globalStyles from '../styles/globalStyles';
+import recSenhaStyles from '../styles/screens/recuperarSenhaStyles' ;
 
 const RecuperarSenha = (props) => {
   const [email, setEmail] = useState('');
@@ -23,13 +24,13 @@ const RecuperarSenha = (props) => {
   };
 
   return (
-    <View style={globalStyles.container}>
+    <View style={recSenhaStyles.container}>
 
-      <View style={globalStyles.header}>
+      <View style={recSenhaStyles.header}>
         <TouchableOpacity onPress={() => props.navigation.navigate('Login')}>
           <Icon name="arrow-back" size={40} color="lightblue" />
         </TouchableOpacity>
-        <Text style={globalStyles.header}>Recuperação de senha</Text>
+        <Text style={recSenhaStyles.header}>Recuperação de senha</Text>
       </View>
 
       <View style={globalStyles.area}>
@@ -45,10 +46,10 @@ const RecuperarSenha = (props) => {
        
       </View>
       <TouchableOpacity
-          style={globalStyles.button}
+          style={recSenhaStyles.button}
           onPress={() => handleRecoverPassword(email)}
         >
-          <Text style={globalStyles.buttonText}>RECUPERAR</Text>
+          <Text style={recSenhaStyles.buttonText}>RECUPERAR</Text>
         </TouchableOpacity>
 
     </View>
