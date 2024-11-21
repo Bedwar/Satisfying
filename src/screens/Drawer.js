@@ -1,8 +1,9 @@
 import { createDrawerNavigator, DrawerItem, DrawerContentScrollView } from '@react-navigation/drawer';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text} from 'react-native';
 import Home from '../screens/Home';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import globalStyles from '../styles/globalStyles';
+
+import drawerStyles from '../styles/screens/drawerStyles' ;
 
 const DrawerNavigator = createDrawerNavigator();
 
@@ -21,7 +22,7 @@ const Drawer = (props) => {
           fontFamily: 'AveriaLibre-Regular'
         },
         drawerLabelStyle: { fontSize: 50, color: 'white', fontFamily: 'AveriaLibre-Regular' },
-        drawerStyle: { backgroundColor: 'darkslateblue', width: '40%', fontFamily: 'AveriaLibre-Regular' },
+        drawerStyle: { backgroundColor: 'darkslateblue', width: '50%', fontFamily: 'AveriaLibre-Regular' },
         headerBackground: () => (
           <View style={{
             alignItems: 'center',
@@ -36,25 +37,27 @@ const Drawer = (props) => {
       drawerContent={(props) =>
 
         <DrawerContentScrollView {...props}>
-          <View style={globalStyles.inputs}>
-            <Text style={globalStyles.inputs}>{email}</Text>
+          <View style={drawerStyles.emailHeader}>
+            <Text style={drawerStyles.text}>{email}</Text>
           </View>
-          <View style={globalStyles.separator}></View>
-          <DrawerItem icon={({ focused, color, size }) => (
+
+          <View style={drawerStyles.separator}></View>
+
+          <DrawerItem style={drawerStyles.header} icon={({ focused, size }) => (
             <Icon
               name="description"
               size={size}
               color={focused ? '#7cc' : '#ccc'}
             />
-          )} labelStyle={{ color: 'white', fontSize: 25, fontFamily: 'AveriaLibre-Regular' }} label="Pesquisas" onPress={() => { props.navigation.goBack() }} />
+          )} labelStyle={drawerStyles.text} label="Pesquisas" onPress={() => { props.navigation.goBack() }} />
 
-          <DrawerItem style={globalStyles.sair} icon={({ focused, color, size }) => (
+          <DrawerItem style={drawerStyles.header} icon={({ focused, size }) => (
             <Icon
-              name="login"
+              name="logout"
               size={size}
               color={focused ? '#7cc' : '#ccc'}
             />
-          )} labelStyle={globalStyles.labelSair} label="Sair" onPress={() => { props.navigation.popToTop() }} />
+          )} labelStyle={drawerStyles.text} label="Sair" onPress={() => { props.navigation.popToTop() }} />
         </DrawerContentScrollView>
 
       }>
