@@ -3,6 +3,7 @@ import { Text, TextInput, TouchableOpacity, View } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import globalStyles from '../styles/globalStyles';
+import newAccStyles from '../styles/screens/novaContaStyles'
 
 const NovaConta = props => {
   const [email, setEmail] = useState('');
@@ -34,12 +35,12 @@ const NovaConta = props => {
   };
 
   return (
-    <View style={globalStyles.container}>
-      <View style={globalStyles.header}>
+    <View style={newAccStyles.container}>
+      <View style={newAccStyles.header}>
         <TouchableOpacity onPress={() => props.navigation.navigate('Login')}>
-          <Icon name="arrow-back" size={30} color="lightblue" />
+          <Icon name="arrow-back" size={30} style={newAccStyles.headerImg} />
         </TouchableOpacity>
-        <Text style={globalStyles.header}>Nova conta</Text>
+        <Text style={newAccStyles.header}>Nova Conta</Text>
       </View>
 
       <View style={globalStyles.area}>
@@ -74,11 +75,11 @@ const NovaConta = props => {
         ) : null}
       </View>
       <TouchableOpacity
-        style={globalStyles.button}
+        style={newAccStyles.button}
         onPress={() => {
           handleRegister(email, password, repeatPassword);
         }}>
-        <Text style={globalStyles.buttonText}>CADASTRAR</Text>
+        <Text style={newAccStyles.buttonText}>CADASTRAR</Text>
       </TouchableOpacity>
     </View>
   );
