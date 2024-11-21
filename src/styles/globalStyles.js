@@ -1,13 +1,16 @@
-import { StyleSheet } from 'react-native';
-import { grey100 } from 'react-native-paper/lib/typescript/styles/themes/v2/colors';
+import {StyleSheet} from 'react-native';
+import {grey100} from 'react-native-paper/lib/typescript/styles/themes/v2/colors';
 
 export const colors = {
-  erro: 'tomato',    
-  background: '#372775', 
+  erro: 'tomato',
+  background: '#372775',
   text: '#FFFFFF',
-  azul:'#4dc6e8',
-  verde: '#5cdb95',     
-    
+  azul: '#4dc6e8',
+  verde: '#5cdb95',
+  darkerBackground: '#2B1D62',
+  btnGreen: '#37BD6D',
+  placeholder: '#939393',
+  goBackBlue: '#573FBA',
 };
 
 export const spacing = {
@@ -33,7 +36,23 @@ const globalStyles = StyleSheet.create({
     backgroundColor: colors.background,
     padding: spacing.large,
   },
+
   header: {
+    display: 'flex',
+    justifyContent: 'flex-start',
+    flexDirection: 'row',
+    fontSize: 30,
+    fontFamily: fonts.bold,
+    color: colors.text,
+    marginBottom: spacing.large,
+    alignItems: 'center',
+    gap: 30,
+    backgroundColor: colors.darkerBackground,
+    width: '100%',
+    paddingVertical: 16,
+  },
+
+  headerLogin: {
     justifyContent:'flex-start',
     flexDirection: 'row',
     fontSize: 30,
@@ -42,35 +61,40 @@ const globalStyles = StyleSheet.create({
     marginBottom: spacing.large,
   },
 
-  label: {
-    justifyContent:'flex-start',
-    fontSize: 18,
-    color: colors.text,
-    fontFamily: fonts.regular
+  headerImg: {
+    marginLeft: 14,
+    color: colors.goBackBlue,
   },
 
- inputs: {
-        width: '93%',
-        color: colors.azul,
-        backgroundColor: colors.text,
-        fontFamily: fonts.regular,
-        borderRadius: 1,
-        height: 35,
-        paddingHorizontal: 15,
-        paddingVertical: 0,
-    
+  label: {
+    justifyContent: 'flex-start',
+    fontSize: 18,
+    color: colors.text,
+    fontFamily: fonts.regular,
   },
- area: {
-    marginLeft:18,
+
+  inputs: {
+    width: '93%',
+    color: colors.azul,
+    backgroundColor: colors.text,
+    fontFamily: fonts.regular,
+    borderRadius: 1,
+    height: 35,
+    paddingHorizontal: 15,
+    paddingVertical: 0,
+  },
+
+  area: {
+    marginLeft: 18,
     //backgroundColor:'red',
-    width:  '100%',
+    width: '100%',
     paddingHorizontal: spacing.medium,
     marginBottom: spacing.medium,
   },
 
   button: {
     backgroundColor: colors.verde,
-    borderRadius:1,
+    borderRadius: 1,
     width: '85%',
     height: 35,
     justifyContent: 'center',
@@ -79,7 +103,7 @@ const globalStyles = StyleSheet.create({
   },
   buttonNc: {
     backgroundColor: colors.azul,
-    borderRadius:1,
+    borderRadius: 1,
     width: '85%',
     height: 30,
     justifyContent: 'center',
@@ -88,8 +112,8 @@ const globalStyles = StyleSheet.create({
   },
 
   buttonRs: {
-    backgroundColor: 'grey',
-    borderRadius:1,
+    backgroundColor: '#B0CCDE',
+    borderRadius: 1,
     width: '85%',
     height: 30,
     justifyContent: 'center',
@@ -98,75 +122,82 @@ const globalStyles = StyleSheet.create({
   },
 
   buttonText: {
-
     color: colors.text,
     fontSize: 20,
     fontFamily: fonts.regular,
   },
 
   errorText: {
- 
     fontSize: 14,
     color: colors.erro,
-
   },
-   linksContainer: {
+  linksContainer: {
     flexDirection: 'column',
     justifyContent: 'space-between',
     alignItems: 'center',
     width: '100%',
-    marginTop:10,
+    marginTop: 10,
   },
 
-   researchCard: {
-        flex: 1,
-        flexDirection: 'column',
-        alignItems: 'center',
-        width: 271,
-        height: 238,
-        backgroundColor: 'white',
-        marginRight: 49,
-        borderRadius: 10,
-   },
+  researchCard: {
+    flex: 1,
+    flexDirection: 'column',
+    alignItems: 'center',
+    width: 271,
+    height: 238,
+    backgroundColor: 'white',
+    marginRight: 49,
+    borderRadius: 10,
+  },
 
-   cardImage: {
-       width: 120,
-       height: 120,
-       marginTop: 26,
-   },
+  imageContainer: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
 
-   title: {
-       fontSize: 16,
-       fontWeight: 400,
-       lineHeight: 36,
-       fontFamily: fonts.regular,
-       fontSize: 36,
-       marginTop: 15,
-   },
+  cardImage: {
+    width: 120,
+    height: 120,
+    marginTop: 26,
+  },
 
-   date: {
-   },
+  title: {
+    fontSize: 16,
+    lineHeight: 36,
+    fontFamily: fonts.regular,
+    fontSize: 36,
+    marginTop: 15,
+    color: colors.text,
+  },
 
-   searchIcon: {
-       width: 24,
-       height: 24,
-       marginLeft: 9,
-   },
+  date: {
+    textAlign: 'center',
+  },
 
-   searchBar: {
-       backgroundColor: colors.text,
-       flex: 1,
-       flexDirection: 'row',
-       justifyContent: 'flex-start',
-       alignItems: 'center',
-   },
+  searchIcon: {
+    width: 24,
+    height: 24,
+    marginLeft: 9,
+  },
 
-   inputText: {
-       fontFamily: fonts.regular,
-       color: 'black',
-       lineHeight: 50,
-       fontSize: 20,
-   },
+  searchBar: {
+    backgroundColor: colors.text,
+    width: '100%',
+    borderRadius: 10,
+    display: 'flex',
+    // flex: 1,
+    // flexDirection: 'row',
+    // justifyContent: 'flex-start',
+    // alignItems: 'center',
+  },
+
+  inputText: {
+    fontFamily: fonts.regular,
+    color: 'black',
+    lineHeight: 50,
+    fontSize: 20,
+  },
 });
 
 export default globalStyles;

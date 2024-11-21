@@ -1,17 +1,18 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
+import { Text, TextInput, TouchableOpacity, View } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+
 import globalStyles from '../styles/globalStyles';
 
-const NovaConta = (props) => {
+const NovaConta = props => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const [sucessoMessage, setSucessoMessage] = useState('');
 
-  const validarEmail = (email) => {
-    return /^[\w+.]+@\w+\.\w{2,}(?:\.\w{2})?$/.test(email)
+  const validarEmail = email => {
+    return /^[\w+.]+@\w+\.\w{2,}(?:\.\w{2})?$/.test(email);
   };
 
   const validarSenha = (senha, repeteSenha) => {
@@ -21,9 +22,9 @@ const NovaConta = (props) => {
   const handleRegister = (email, senha, repeteSenha) => {
     setErrorMessage('');
     setSucessoMessage('');
-    if(validarEmail(email)) {
-      if(validarSenha(senha, repeteSenha)) {
-        setSucessoMessage('Cadastro realizado com sucesso!')
+    if (validarEmail(email)) {
+      if (validarSenha(senha, repeteSenha)) {
+        setSucessoMessage('Cadastro realizado com sucesso!');
       } else {
         setErrorMessage('O campo repetir senha difere da senha');
       }
@@ -41,9 +42,8 @@ const NovaConta = (props) => {
         <Text style={globalStyles.header}>Nova conta</Text>
       </View>
 
-
       <View style={globalStyles.area}>
-       <Text style={globalStyles.label}>E-mail</Text>
+        <Text style={globalStyles.label}>E-mail</Text>
         <TextInput
           style={globalStyles.inputs}
           placeholder="usuario@dominio.com"
@@ -66,19 +66,22 @@ const NovaConta = (props) => {
           value={repeatPassword}
           onChangeText={text => setRepeatPassword(text)}
         />
-        {errorMessage ? <Text style={globalStyles.errorText}>{errorMessage}</Text> : null}
-        {sucessoMessage ? <Text style={globalStyles.sucessoMessage}>{sucessoMessage}</Text> : null}
-       
+        {errorMessage ? (
+          <Text style={globalStyles.errorText}>{errorMessage}</Text>
+        ) : null}
+        {sucessoMessage ? (
+          <Text style={globalStyles.sucessoMessage}>{sucessoMessage}</Text>
+        ) : null}
       </View>
       <TouchableOpacity
-          style={globalStyles.button}
-          onPress={() => {handleRegister(email, password, repeatPassword)}}
-        >
-          <Text style={globalStyles.buttonText}>CADASTRAR</Text>
-        </TouchableOpacity>
+        style={globalStyles.button}
+        onPress={() => {
+          handleRegister(email, password, repeatPassword);
+        }}>
+        <Text style={globalStyles.buttonText}>CADASTRAR</Text>
+      </TouchableOpacity>
     </View>
   );
 };
-
 
 export default NovaConta;

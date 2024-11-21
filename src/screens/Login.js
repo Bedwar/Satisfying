@@ -29,6 +29,7 @@ const Login = (props) => {
 
   const showHome = (email, password) => {
    // if (validarEmail(email) && password !== '') {
+      setErrorMessage('');
       props.navigation.navigate('Drawer', { email: email });
    // } else {
     //  handleError();
@@ -39,8 +40,8 @@ const Login = (props) => {
     <ScrollView contentContainerStyle={globalStyles.container}>
       
       
-      <View style={globalStyles.header}>
-        <Text style={globalStyles.header}> Satisfying.you </Text>
+      <View style={globalStyles.headerLogin}>
+        <Text style={globalStyles.headerLogin}> Satisfying.you </Text>
         <Icon name="mood" size={40} color="white" />
       </View>
 
