@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { PieChart } from 'react-native-chart-kit';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import globalStyles from '../styles/globalStyles';
+import relatorioStyles from '../styles/screens/relatorioStyles' ;
 
 
 const Relatorio = (props) => {
@@ -15,16 +16,16 @@ const Relatorio = (props) => {
   ];
 
   return (
-    <View style={globalStyles.container}>
+    <View style={relatorioStyles.container}>
 
-        <View style={globalStyles.header}>
+        <View style={relatorioStyles.header}>
             <TouchableOpacity onPress={() => props.navigation.goBack()}>
                 <Icon name="arrow-back" size={30} color="lightblue" />
             </TouchableOpacity>
-            <Text style={globalStyles.title}>Relatorio</Text>
+            <Text style={relatorioStyles.title}>Relatório</Text>
         </View>
 
-        <View style={globalStyles.content}>
+        <View style={relatorioStyles.content}>
             <PieChart
                 data={data}
                 width={350}
