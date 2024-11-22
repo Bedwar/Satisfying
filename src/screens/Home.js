@@ -1,5 +1,5 @@
 import React from 'react';
-import { ScrollView, Text, TouchableOpacity, View } from 'react-native';
+import { ScrollView, Text, TouchableOpacity, View, Image } from 'react-native';
 import { TextInput } from 'react-native-paper';
 
 import CardPesquisa from '../components/CardPesquisa';
@@ -37,7 +37,6 @@ const Home = (props) => {
 
       <ScrollView
         horizontal={true}
-        showsHorizontalScrollIndicator={false}
         style={[{marginTop: 58}]}>
         {researchData.map((research, index) => {
           return (

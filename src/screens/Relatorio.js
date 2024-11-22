@@ -1,48 +1,27 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
-import { PieChart } from 'react-native-chart-kit';
+import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import globalStyles from '../styles/globalStyles';
 import relatorioStyles from '../styles/screens/relatorioStyles' ;
 
 
 const Relatorio = (props) => {
-  const data = [
-    { name: 'Excelente', population: 60, color: 'limegreen', legendFontColor: 'white', legendFontSize: 15 },
-    { name: 'Bom', population: 20, color: 'blue', legendFontColor: 'white', legendFontSize: 15 },
-    { name: 'Neutro', population: 10, color: 'gold', legendFontColor: 'white', legendFontSize: 15 },
-    { name: 'Ruim', population: 5, color: 'darkorange', legendFontColor: 'white', legendFontSize: 15 },
-    { name: 'Péssimo', population: 5, color: 'crimson', legendFontColor: 'white', legendFontSize: 15 },
-  ];
-
+  
   return (
     <View style={relatorioStyles.container}>
 
         <View style={relatorioStyles.header}>
             <TouchableOpacity onPress={() => props.navigation.goBack()}>
-                <Icon name="arrow-back" size={30} color="lightblue" />
+                <Icon name="arrow-back" size={30} color="white" />
             </TouchableOpacity>
             <Text style={relatorioStyles.title}>Relatório</Text>
         </View>
-
-        <View style={relatorioStyles.content}>
-            <PieChart
-                data={data}
-                width={350}
-                height={220}
-                chartConfig={{
-                backgroundColor: '#1cc910',
-                backgroundGradientFrom: '#eff3ff',
-                backgroundGradientTo: '#efefef',
-                color: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
-                }}
-                accessor="population"
-                backgroundColor="transparent"
-                paddingLeft="15"
-                absolute
-                fontFamily='AveriaLibre-Regular'
-            />
-        </View>
+        <View style={relatorioStyles.image}>
+      <Image source={require('../../assets/images/chart.png')} 
+      />
+      </View>
+  
+       
     </View>
   );
 };

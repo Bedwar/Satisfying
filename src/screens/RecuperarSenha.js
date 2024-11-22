@@ -44,7 +44,7 @@ const RecuperarSenha = (props) => {
         {errorMessage ? <Text style={globalStyles.errorText}>{errorMessage}</Text> : null}
         {sucessoMessage ? <Text style={globalStyles.sucessoMessage}>{sucessoMessage}</Text> : null}
        
-      </View>
+      </View >
       <TouchableOpacity
           style={recSenhaStyles.button}
           onPress={() => handleRecoverPassword(email)}

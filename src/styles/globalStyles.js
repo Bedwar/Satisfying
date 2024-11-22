@@ -152,7 +152,7 @@ const globalStyles = StyleSheet.create({
     flexDirection: 'column',
     alignItems: 'center',
     width: 271,
-    height: 238,
+    height: '50%',
     backgroundColor: 'white',
     marginRight: 49,
     borderRadius: 10,

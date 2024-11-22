@@ -5,8 +5,7 @@ const relatorioStyles = StyleSheet.create({
   container: {
     flex: 1,
     flexGrow: 1,
-    justifyContent: 'space-between',
-    alignItems: 'center',
+    
     backgroundColor: colors.background,
     // padding: spacing.large,
   },
@@ -27,14 +26,15 @@ const relatorioStyles = StyleSheet.create({
   },
 
   content: {
-    height: '90%',
-    width: '100%',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
     padding: spacing.large,
   },
-
+image: {
+    width: '80%',  
+    height: '80%',
+  },
   title: {
     lineHeight: 36,
     fontFamily: fonts.regular,
